@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>51memo</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/Chart.css">
+    <style>
+        .sidebar .nav-link.active {
+            color: #007bff;
+        }
+
+        .sidebar .nav-link {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .sidebar .nav-link .feather {
+            margin-right: 4px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid">
+            <nav class="navbar">
+                <a class="navbar-brand" href="#"><img src="img/51memo-logo.png" alt="logo"></a>
+                <p class="navbar-brand" style="margin-right: 0px;margin-bottom: 0px;">个人备忘录</p>
+                <div class="navbar-brand">
+                    <div class="input-group">
+                        <button class="btn" type="submit"><a href="#"><img src="img/shop-find.png" alt=""
+                                    style="width: 30px;"></a></button>
+                        <input type="text">
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <hr>
+    </header>
+    <section>
+        <!-- 侧边栏实现 -->
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link h3 active" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                首页<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                今日事件<span class="badge badge-pill badge-primary">3</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                最近事件<span class="badge badge-pill badge-primary">7</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                完成事件<span class="badge badge-pill badge-primary">5</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                未完成事件<span class="badge badge-pill badge-primary">5</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                删除事件<span class="badge badge-pill badge-primary">3</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted border-bottom">
+                        <span>事件排序</span>
+                        <a class="d-flex align-items-center text-muted" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-plus-circle">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="16"></line>
+                                <line x1="8" y1="12" x2="16" y2="12"></line>
+                            </svg>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-file-text">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                                时间排序
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-file-text">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                                重要性排序
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-file-text">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                                处理情况排序
+                            </a>
+                        </li>
+                        <h6
+                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted border-bottom">
+                            <span>重要性说明</span>
+                        </h6>
+                        <li class="nav-item">
+                            <a href="#" class="ml-3 my-md-3 badge badge-danger">非常重要</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="ml-3 my-md-3 badge badge-warning">一般重要</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="ml-3 my-md-3 badge badge-info">简单事件</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="ml-3 my-md-3 badge badge-primary">轻松事件</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div class="chartjs-size-monitor"
+                    style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                    <div class="chartjs-size-monitor-expand"
+                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink"
+                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                        <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                    </div>
+                </div>
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
+                    <h3 class="h3">事件处理柱形图</h3>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <select class="chart btn btn-sm btn-outline-secondary dropdown-toggle" data-live-search="true"
+                            onchange="chartChange(this)">
+                            <option selected="selected" value="search-week">星期</option>
+                            <option value="search-twoweek">两周</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="myChart" style="display: block;height: 488px;width: 1158px;"></canvas>
+
+                <div class="row justify-content-around pt-3">
+                    <div class="col-lg-6">
+                        <h3 class="border-bottom pr-5 pl-5">今日计划</h3>
+                        <div class="list-group">
+                            <li class="list-group-item bg-danger">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                每天7点起床
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="btn-group float-right d-none" role="group"
+                                            aria-label="Button group with nested dropdown">
+                                            <button type="button" class="btn btn-secondary">修改</button>
+                                            <button type="button" class="btn btn-info">删除</button>
+                                            <button type="button" class="btn btn-danger">完成</button>
+                                            <div class="btn-group" role="group">
+                                                <button id="btnGroupDrop4" type="button"
+                                                    class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    移动
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                    <a class="dropdown-item" href="#">明天</a>
+                                                    <a class="dropdown-item" href="#">下一周</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item bg-warning">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                学习课程
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="btn-group float-right d-none" role="group"
+                                            aria-label="Button group with nested dropdown">
+                                            <button type="button" class="btn btn-secondary">修改</button>
+                                            <button type="button" class="btn btn-info">删除</button>
+                                            <button type="button" class="btn btn-danger">完成</button>
+                                            <div class="btn-group" role="group">
+                                                <button id="btnGroupDrop4" type="button"
+                                                    class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    移动
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                    <a class="dropdown-item" href="#">明天</a>
+                                                    <a class="dropdown-item" href="#">下一周</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item bg-info">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                上街买菜
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="btn-group float-right d-none" role="group"
+                                            aria-label="Button group with nested dropdown">
+                                            <button type="button" class="btn btn-secondary">修改</button>
+                                            <button type="button" class="btn btn-info">删除</button>
+                                            <button type="button" class="btn btn-danger">完成</button>
+                                            <div class="btn-group" role="group">
+                                                <button id="btnGroupDrop4" type="button"
+                                                    class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    移动
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                    <a class="dropdown-item" href="#">明天</a>
+                                                    <a class="dropdown-item" href="#">下一周</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item bg-primary">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                睡前看书
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="btn-group float-right d-none" role="group"
+                                            aria-label="Button group with nested dropdown">
+                                            <button type="button" class="btn btn-secondary">修改</button>
+                                            <button type="button" class="btn btn-info">删除</button>
+                                            <button type="button" class="btn btn-danger">完成</button>
+                                            <div class="btn-group" role="group">
+                                                <button id="btnGroupDrop4" type="button"
+                                                    class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    移动
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                    <a class="dropdown-item" href="#">明天</a>
+                                                    <a class="dropdown-item" href="#">下一周</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="border-bottom pr-5 pl-5">后续计划</h3>
+                        <div class="list-group">
+                            <li class="list-group-item bg-danger">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                每天7点起床
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="btn-group float-right d-none" role="group"
+                                            aria-label="Button group with nested dropdown">
+                                            <button type="button" class="btn btn-secondary">修改</button>
+                                            <button type="button" class="btn btn-info">删除</button>
+                                            <button type="button" class="btn btn-danger">完成</button>
+                                            <div class="btn-group" role="group">
+                                                <button id="btnGroupDrop4" type="button"
+                                                    class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    移动
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                    <a class="dropdown-item" href="#">明天</a>
+                                                    <a class="dropdown-item" href="#">下一周</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item bg-warning">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                学习课程
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="btn-group float-right d-none" role="group"
+                                            aria-label="Button group with nested dropdown">
+                                            <button type="button" class="btn btn-secondary">修改</button>
+                                            <button type="button" class="btn btn-info">删除</button>
+                                            <button type="button" class="btn btn-danger">完成</button>
+                                            <div class="btn-group" role="group">
+                                                <button id="btnGroupDrop4" type="button"
+                                                    class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    移动
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                    <a class="dropdown-item" href="#">明天</a>
+                                                    <a class="dropdown-item" href="#">下一周</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item bg-info">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                上街买菜
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="btn-group float-right d-none" role="group"
+                                            aria-label="Button group with nested dropdown">
+                                            <button type="button" class="btn btn-secondary">修改</button>
+                                            <button type="button" class="btn btn-info">删除</button>
+                                            <button type="button" class="btn btn-danger">完成</button>
+                                            <div class="btn-group" role="group">
+                                                <button id="btnGroupDrop4" type="button"
+                                                    class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    移动
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                    <a class="dropdown-item" href="#">明天</a>
+                                                    <a class="dropdown-item" href="#">下一周</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item bg-primary">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                睡前看书
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="btn-group float-right d-none" role="group"
+                                            aria-label="Button group with nested dropdown">
+                                            <button type="button" class="btn btn-secondary">修改</button>
+                                            <button type="button" class="btn btn-info">删除</button>
+                                            <button type="button" class="btn btn-danger">完成</button>
+                                            <div class="btn-group" role="group">
+                                                <button id="btnGroupDrop4" type="button"
+                                                    class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    移动
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                    <a class="dropdown-item" href="#">明天</a>
+                                                    <a class="dropdown-item" href="#">下一周</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <footer class="bg-secondary d-flex justify-content-center my-3" style="height: 100px">
+        <div class="d-flex justify-content-center my-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="d-block mb-2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+                <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+                <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+                <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+                <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+                <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+            </svg>
+            <p></p>order by joe</p>
+        </div>
+    </footer>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="js/Chart.js"></script>
+    <script>
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['8月12日', '8月13日', '8月14日', '8月15日', '8月16日', '8月17日', '8月18日'],
+                datasets: [{
+                    label: '一周事件完成情况',
+                    data: [1, 3, 4, 6, 1, 4, 3],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        'rgba(255, 255, 255, 0)',
+                    ],
+                    borderColor: [
+                        '#0062cc',
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        function chartChange(item) {
+            let change = document.getElementsByClassName('chart')[0].value;
+            var ctx = document.getElementById('myChart');
+            if (change == 'search-twoweek') {
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['8月5日', '8月6日', '8月7日', '8月8日', '8月9日', '8月10日', '8月11日', '8月12日', '8月13日',
+                            '8月14日', '8月15日', '8月16日', '8月17日', '8月18日'
+                        ],
+                        datasets: [{
+                            label: '一周事件完成情况',
+                            data: [6, 7, 8, 4, 3, 2, 1, 1, 3, 4, 6, 1, 4, 3],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                'rgba(255, 255, 255, 0)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                            ]
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            } else if (change == 'search-week') {
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['8月12日', '8月13日', '8月14日', '8月15日', '8月16日', '8月17日', '8月18日'],
+                        datasets: [{
+                            label: '一周事件完成情况',
+                            data: [1, 3, 4, 6, 1, 4, 3],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                'rgba(255, 255, 255, 0)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                            ]
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            }
+        }
+        $('.list-group-item').hover(function () {
+            const div = $(this).find('.btn-group')[0];
+            console.log(div);
+            if (div) {
+                $(div).removeClass('d-none');
+            }
+        }, function () {
+            const div = $(this).find('.btn-group')[0];
+            // console.log(div);
+            if (div) {
+                $(div).addClass('d-none');
+            }
+        });
+    </script>
+</body>
+
+</html>
